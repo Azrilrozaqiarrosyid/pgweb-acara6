@@ -35,10 +35,11 @@
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="index.html">Jumlah Penduduk</a></li>
-                            <li><a class="dropdown-item" href="pendudukjeniskelamin.html">Jumlah Desa</a></li>
-                            <li><a class="dropdown-item" href="perbandinganluaspadijagung.html">Panjang Jalan menurut Kondisi</a></li>
-                            <li><a class="dropdown-item" href="#">Total Hasil Produksi Padi</a></li>
-                            <li><a class="dropdown-item" href="#">Jumlah Ternak Sapi</a></li>
+                            <li><a class="dropdown-item" href="pendudukjeniskelamin.html">Jumlah Penduduk Menurut Jenis
+                                    Kelamin</a></li>
+                            <li><a class="dropdown-item" href="panjangjalan.html">Panjang Jalan menurut Kondisi</a></li>
+                            <li><a class="dropdown-item" href="produksipadi.html">Total Hasil Produksi Padi</a></li>
+                            <li><a class="dropdown-item" href="pencarikerja.html">Grafik Jumlah Pencari Kerja</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -57,7 +58,7 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-header">
-                <h5>Panjang Jalan Menurut Kondisi tahun 2022</h5>
+                <h5>Jumlah Produksi Padi Per Kecamatan Tahun 2022 (Ton)</h5>
             </div>
             <div class="card-body">
                 <div id="chart"></div>
@@ -98,28 +99,41 @@
 
     <script>
         var options = {
-            series: [260.826, 70.740, 35.700, 48.850],
+            series: [{
+                name: 'Produksi Total',
+                data: [33667, 34326, 49959, 42921, 55223, 70227, 87598, 67819, 73358, 61405, 48872, 60360, 35267, 
+                57612, 54669, 29004, 30256, 30556, 36870, 25447, 30686, 49473, 36142, 71401, 
+                20400, 4269, 7844]
+            }],
+            title: {
+                    text: 'Kecamatan'
+                },
             chart: {
-                type: 'donut',
-                width: 500
+                type: 'bar',
+                height: 700
             },
-            labels: ['Baik', 'Sedang', 'Rusak', 'Rusak Berat'],
-            responsive: [{
-                breakpoint: 480,
-                options: {
-                    chart: {
-                        width: 200
-                    },
-                    legend: {
-                        position: 'bottom'
-                    }
+            plotOptions: {
+                bar: {
+                    borderRadius: 2,
+                    horizontal: true,
                 }
-            }]
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: ['Sukorame', 'Bluluk', 'Ngimbang', 'Sambeng', 'Mantup', 'Kembangbahu', 'Sugio',
+                    'Kedungpring', 'Modo', 'Babat', 'Pucuk', 'Sukodadi', 'Lamongan', 'Tikung', 'Sarirejo', 'Deket',
+                    'Glagah', 'Karangbinangun', 'Turi', 'Kalitengah', 'Karanggeneng', 'Sekaran', 'Maduran', 'Laren',
+                    'Solokuro', 'Paciran', 'Brondong'],
+                    title: {
+                    text: 'Jumlah Total (Ton)'
+                } 
+            }
         };
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
-    </script>
+        chart.render();    </script>
 </body>
 
 </html>
